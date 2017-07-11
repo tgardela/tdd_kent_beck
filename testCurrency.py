@@ -7,9 +7,9 @@ class TestHelpers(unittest.TestCase):
 
 
     def test_Multiplication(self):
-        Dollar five = Dollar(5)
+        five = Dollar(5)
         five.times(2)
-        self.assertEqual(10, five.ammount)
+        self.assertEqual(10, five.amount)
 
 
 
