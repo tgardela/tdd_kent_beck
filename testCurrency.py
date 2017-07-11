@@ -6,11 +6,9 @@ class TestHelpers(unittest.TestCase):
 
     def test_Multiplication(self):
         five = Dollar(5)
-        product = five.times(2)
-        self.assertEqual(10, product.amount)
 
-        product = five.times(3)
-        self.assertEqual(15, product.amount)
+        self.assertEqual(Dollar(10).amount, five.times(2).amount)
+        self.assertEqual(Dollar(15).amount, five.times(3).amount)
 
 
     def test_Equity(self):
