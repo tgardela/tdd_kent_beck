@@ -15,6 +15,8 @@ class TestHelpers(unittest.TestCase):
 
     def test_Equity(self):
         self.assertTrue(Dollar(5).equals(Dollar(5)))
+        self.assertFalse(Dollar(5).equals(Dollar(6)))
+
 
 if __name__=='__main__':
     unittest.main(verbosity=2)
