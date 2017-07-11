@@ -1,5 +1,5 @@
 import unittest
-from .currency import Dollar
+from currency import Dollar
 
 
 class TestHelpers(unittest.TestCase):
