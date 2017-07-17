@@ -28,5 +28,10 @@ class TestHelpers(unittest.TestCase):
         self.assertFalse(Money.franc(5).equals(Money.dollar(5)))
 
 
+    def test_Currency(self):
+        self.assertEqual('USD', Money.dollar(1).currency())
+        self.assertEqual('CHF', Money.franc(1).currency())
+
+
 if __name__=='__main__':
     unittest.main(verbosity=2)
