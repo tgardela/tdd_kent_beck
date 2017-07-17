@@ -10,6 +10,15 @@ class Money():
     def __eq__(self, money):
         return self.__dict__ == money.__dict__
 
+    @staticmethod
+    def dollar(amount):
+        return Dollar(amount)
+
+
+    @staticmethod
+    def franc(amount):
+        return Franc(amount)
+
 
 
 class Dollar(Money):
