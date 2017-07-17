@@ -1,5 +1,5 @@
 import unittest
-from currency import Dollar
+from currency import Dollar, Franc
 
 
 class TestHelpers(unittest.TestCase):
@@ -7,8 +7,15 @@ class TestHelpers(unittest.TestCase):
     def test_Multiplication(self):
         five = Dollar(5)
 
-        self.assertEqual(Dollar(10).amount, five.times(2).amount)
-        self.assertEqual(Dollar(15).amount, five.times(3).amount)
+        self.assertEqual(Dollar(10), five.times(2))
+        self.assertEqual(Dollar(15), five.times(3))
+
+
+    def test_FrancMultiplication(self):
+        five = Franc(5)
+
+        self.assertEqual(Franc(10), five.times(2))
+        self.assertEqual(Franc(15), five.times(3))
 
 
     def test_Equity(self):
