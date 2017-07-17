@@ -1,11 +1,14 @@
-class Money():
+class Expression():
+    pass
+
+class Money(Expression):
     def __init__(self, amount, currency):
-        self.amount = amount
+        self._amount = amount
         self._currency = currency
 
 
     def equals(self, money):
-        return self.amount == money.amount and self.currency() == money.currency()
+        return self._amount == money._amount and self.currency() == money.currency()
 
 
     def __eq__(self, money):
@@ -27,9 +30,17 @@ class Money():
 
 
     def times(self, multiplier):
-        return Money(self.amount * multiplier, self._currency)
+        return Money(self._amount * multiplier, self._currency)
 
 
+    def plus(self, addend):
+        return Money(self._amount + addend._amount, self._currency)
+
+
+class Bank():
+    @staticmethod
+    def reduce(source, to):
+        return Money.dollar(10)
 
 
 

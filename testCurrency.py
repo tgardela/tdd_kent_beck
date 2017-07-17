@@ -1,5 +1,5 @@
 import unittest
-from currency import Money
+from currency import Money, Bank
 
 
 class TestHelpers(unittest.TestCase):
@@ -22,6 +22,13 @@ class TestHelpers(unittest.TestCase):
         self.assertEqual('USD', Money.dollar(1).currency())
         self.assertEqual('CHF', Money.franc(1).currency())
 
+
+    def test_SimpleAddition(self):
+        five = Money.dollar(5)
+        sum = five.plus(five)
+        bank = Bank()
+        reduced = bank.reduce(sum, 'USD')
+        self.assertEqual(reduced, Money.dollar(10))
 
 if __name__=='__main__':
     unittest.main(verbosity=2)
