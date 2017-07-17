@@ -33,5 +33,9 @@ class TestHelpers(unittest.TestCase):
         self.assertEqual('CHF', Money.franc(1).currency())
 
 
+    def test_DifferentClassEquality(self):
+        self.assertTrue(Money(10, 'CHF').equals(Franc(10, 'CHF')))
+
+
 if __name__=='__main__':
     unittest.main(verbosity=2)

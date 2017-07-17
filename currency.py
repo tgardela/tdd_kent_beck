@@ -5,7 +5,7 @@ class Money():
 
 
     def equals(self, money):
-        return self.amount == money.amount and self.__class__ == money.__class__
+        return self.amount == money.amount and self.currency() == money.currency()
 
 
     def __eq__(self, money):
@@ -26,15 +26,14 @@ class Money():
         return self._currency
 
 
+    def times(self, multiplier):
+        return Money(self.amount * multiplier, self._currency)
+
+
 
 class Dollar(Money):
     def __init__(self, amount, currency):
         super(Dollar, self).__init__(amount, currency)
-
-
-    def times(self, multiplier):
-        return Money.dollar(self.amount * multiplier)
-
 
 
 class Franc(Money):
@@ -42,8 +41,7 @@ class Franc(Money):
         super(Franc, self).__init__(amount, currency)
 
 
-    def times(self, multiplier):
-        return Money.franc(self.amount * multiplier)
+
 
 
 
