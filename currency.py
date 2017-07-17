@@ -1,6 +1,7 @@
 class Money():
-    def __init__(self, amount):
+    def __init__(self, amount, currency):
         self.amount = amount
+        self._currency = currency
 
 
     def equals(self, money):
@@ -10,43 +11,39 @@ class Money():
     def __eq__(self, money):
         return self.__dict__ == money.__dict__
 
+
     @staticmethod
     def dollar(amount):
-        return Dollar(amount)
+        return Dollar(amount, 'USD')
 
 
     @staticmethod
     def franc(amount):
-        return Franc(amount)
+        return Franc(amount, 'CHF')
 
 
     def currency(self):
-        pass
+        return self._currency
 
 
 
 class Dollar(Money):
-    def __init__(self, amount):
-        super(Dollar, self).__init__(amount)
-        self._currency = 'USD'
+    def __init__(self, amount, currency):
+        super(Dollar, self).__init__(amount, currency)
+
 
     def times(self, multiplier):
-        return Dollar(self.amount * multiplier)
+        return Money.dollar(self.amount * multiplier)
 
-    def currency(self):
-        return self._currency
 
 
 class Franc(Money):
-
-    def __init__(self, amount):
-        super(Franc, self).__init__(amount)
-        self._currency = 'CHF'
+    def __init__(self, amount, currency):
+        super(Franc, self).__init__(amount, currency)
 
 
     def times(self, multiplier):
-        return Franc(self.amount * multiplier)
+        return Money.franc(self.amount * multiplier)
 
 
-    def currency(self):
-        return self._currency
+
