@@ -40,7 +40,9 @@ class Money(Expression):
 class Bank():
     @staticmethod
     def reduce(source, to):
-        return Money.dollar(10)
+        sum = source
+        amount = sum.augend._amount + sum.addend._amount
+        return Money(amount, to)
 
 
 class Sum(Expression):
