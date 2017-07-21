@@ -63,6 +63,17 @@ class Sum(Expression):
         return Money(amount, to)
 
 
+class Pair():
+    def __init__(self, fromC, toC):
+        self.fromC = fromC
+        self.toC = toC
 
 
+    def equals(self, object):
+        pair = Pair()
+
+
+
+    def hashcode(self):
+        return 0
 
