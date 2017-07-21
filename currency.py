@@ -1,5 +1,6 @@
 class Expression():
-    pass
+    def reduce(self, to):
+        pass
 
 class Money(Expression):
     def __init__(self, amount, currency):
@@ -37,11 +38,18 @@ class Money(Expression):
         return Sum(self, addend)
 
 
+    def reduce(self, to):
+        return self
+
+
 class Bank():
     @staticmethod
     def reduce(source, to):
-        sum = source
-        return sum.reduce(to)
+        # if source is Money:
+        #     return Money(source._amount, to)
+        # sum = source
+        # return sum.reduce(to)
+        return source.reduce(to)
 
 
 class Sum(Expression):
