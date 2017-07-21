@@ -34,13 +34,19 @@ class Money(Expression):
 
 
     def plus(self, addend):
-        return Money(self._amount + addend._amount, self._currency)
+        return Sum(self, addend)
 
 
 class Bank():
     @staticmethod
     def reduce(source, to):
         return Money.dollar(10)
+
+
+class Sum(Expression):
+    def __init__(self, augend, addend):
+        self.addend = addend
+        self.augend = augend
 
 
 
