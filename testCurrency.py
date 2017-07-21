@@ -50,5 +50,13 @@ class TestHelpers(unittest.TestCase):
         result = bank.reduce(Money.dollar(1), 'USD')
         self.assertEqual(Money.dollar(1), result)
 
+
+    def test_ReduceMoneyDifferentCurrency(self):
+        bank = Bank()
+        bank.addRate('CHF', 'USD', 2)
+        result = bank.reduce(Money.franc(2), 'USD')
+        self.assertEqual(Money.dollar(1), result)
+
+
 if __name__=='__main__':
     unittest.main(verbosity=2)

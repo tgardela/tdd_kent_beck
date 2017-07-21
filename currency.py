@@ -1,5 +1,5 @@
 class Expression():
-    def reduce(self, to):
+    def reduce(self, bank, to):
         pass
 
 class Money(Expression):
@@ -38,18 +38,18 @@ class Money(Expression):
         return Sum(self, addend)
 
 
-    def reduce(self, to):
-        return self
+    def reduce(self, bank, to):
+        rate = bank.rate(self._currency, to)
+        return Money(self._amount / rate, to)
 
 
 class Bank():
-    @staticmethod
-    def reduce(source, to):
-        # if source is Money:
-        #     return Money(source._amount, to)
-        # sum = source
-        # return sum.reduce(to)
-        return source.reduce(to)
+    def reduce(self, source, to):
+        return source.reduce(self, to)
+
+
+    def rate(self, fromCurr, toCurr):
+        return 2 if fromCurr == 'CHF' and toCurr == 'USD' else 1
 
 
 class Sum(Expression):
@@ -58,7 +58,7 @@ class Sum(Expression):
         self.augend = augend
 
 
-    def reduce(self, to):
+    def reduce(self, bank, to):
         amount = self.augend._amount + self.addend._amount
         return Money(amount, to)
 
