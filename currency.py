@@ -41,14 +41,18 @@ class Bank():
     @staticmethod
     def reduce(source, to):
         sum = source
-        amount = sum.augend._amount + sum.addend._amount
-        return Money(amount, to)
+        return sum.reduce(to)
 
 
 class Sum(Expression):
     def __init__(self, augend, addend):
         self.addend = addend
         self.augend = augend
+
+
+    def reduce(self, to):
+        amount = self.augend._amount + self.addend._amount
+        return Money(amount, to)
 
 
 
