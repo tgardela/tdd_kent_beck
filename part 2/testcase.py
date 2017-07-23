@@ -14,6 +14,7 @@ class TestCase():
         method = getattr(self, self.name)
         method()
         self.tearDown()
+        return TestResult()
 
 
     def tearDown(self):
@@ -38,4 +39,6 @@ class WasRun(TestCase):
 
 
 
-
+class TestResult():
+    def summary(self):
+        return '1 run, 0 failed'
