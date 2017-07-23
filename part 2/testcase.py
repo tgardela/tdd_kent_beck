@@ -6,11 +6,18 @@ class TestCase():
     def setUp(self):
         pass
 
+
     # takes attributes: self and self.name and calls a method that has a name == self.name
     def run(self):
+        # result.testStarted()
         self.setUp()
         method = getattr(self, self.name)
         method()
+        self.tearDown()
+
+
+    def tearDown(self):
+        pass
 
 
 class WasRun(TestCase):
@@ -18,13 +25,17 @@ class WasRun(TestCase):
         TestCase.__init__(self, name)
 
 
+    def setUp(self):
+        self.log = 'setUp '
+
+
     def testMethod(self):
-        self.wasRun = 1
         self.log += 'testMethod '
 
 
-    def setUp(self):
-        self.wasRun = None
-        self.wasSetUp = 1
-        self.log = 'setUp '
+    def tearDown(self):
+        self.log += 'tearDown '
+
+
+
 
