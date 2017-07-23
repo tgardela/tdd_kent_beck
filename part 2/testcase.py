@@ -6,14 +6,15 @@ class TestCase():
         pass
 
     # takes attributes: self and self.name and calls a method that has a name == self.name
-    def run(self):
-        result = TestResult()
+    def run(self, result):
         result.testStarted()
         self.setUp()
-        method = getattr(self, self.name)
-        method()
+        try:
+            method = getattr(self, self.name)
+            method()
+        except:
+            result.testFailed()
         self.tearDown()
-        return result
 
     def tearDown(self):
         pass
@@ -39,9 +40,25 @@ class WasRun(TestCase):
 class TestResult():
     def __init__(self):
         self.runCount = 0
+        self.failureCount = 0
 
     def testStarted(self):
         self.runCount += 1
 
+    def testFailed(self):
+        self.failureCount += 1
+
     def summary(self):
-        return '%d run, 0 failed' % self.runCount
+        return '%d run, %d failed' % (self.runCount, self.failureCount)
+
+
+class TestSuite():
+    def __init__(self):
+        self.tests = []
+
+    def add(self, test):
+        self.tests.append(test)
+
+    def run(self, result):
+        for test in self.tests:
+            test.run(result)
