@@ -3,11 +3,12 @@ import fib
 
 
 class TestFibonacchi(unittest.TestCase):
-    def test_FibRetZero(self):
-        self.assertEqual(0, fib.fibonacchi(0))
+    def test_Fibonacchi(self):
+        testCases = [[0,0], [1,1]]
+        for i in range(0, len(testCases)):
+            self.assertEqual(testCases[i][0], fib.fibonacchi(testCases[i][1]))
 
-    def test_FibRetOne(self):
-        self.assertEqual(1, fib.fibonacchi(1))
+
 
 
 
