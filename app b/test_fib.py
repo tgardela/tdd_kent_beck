@@ -6,6 +6,9 @@ class TestFibonacchi(unittest.TestCase):
     def test_FibRetZero(self):
         self.assertEqual(0, fib.fibonacchi(0))
 
+    def test_FibRetOne(self):
+        self.assertEqual(1, fib.fibonacchi(1))
+
 
 
 
