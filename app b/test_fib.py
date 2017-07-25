@@ -4,7 +4,7 @@ import fib
 
 class TestFibonacchi(unittest.TestCase):
     def test_Fibonacchi(self):
-        testCases = [[0,0], [1,1]]
+        testCases = [[0,0], [1,1], [2,1], [3,2]]
         for i in range(0, len(testCases)):
             self.assertEqual(testCases[i][0], fib.fibonacchi(testCases[i][1]))
 
